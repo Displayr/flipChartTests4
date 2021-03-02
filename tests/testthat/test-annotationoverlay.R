@@ -65,6 +65,36 @@ test_that("Overlay annotations",
         size = 6, offset = 2, font.family = "Arial",
         font.weight = "normal", font.style = "normal")))
     expect_true(TestWidget(pp, "annot-overlay-text"))
+
+    pp <- SmallMultiples(data.with.stats[-10,-3,], "Column",
+        overlay.annotation.list = list(list(type = "Arrow - up", data = "p",
+        threstype = "below threshold", threshold = "0.05",
+        relative.pos = 0.0,  valign = "top", halign = "center",
+        offset = 5, color = "red", size = 20,
+        font.family = "Arial"), list(type = "Arrow - down", data = "p",
+        threstype = "above threshold", threshold = "0.05", color = "blue",
+        relative.pos = 1.0,  valign = "top", halign = "center",
+        size = 20, offset = 5, font.family = "Arial",
+        font.weight = "normal", font.style = "normal")))
+    expect_true(TestWidget(pp, "annot-overlay-column-smallmult"))
+
+    pp <- SmallMultiples(data.with.stats[-10,-3,], "Radar",
+        overlay.annotation.list = list(list(type = "Custom text",
+        custom.symbol = "*", data = "p",
+        threstype = "below threshold", threshold = "0.05",
+        color = "red", size = 20, font.family = "Arial")),
+        x.tick.font.size = 9, average.show = TRUE)
+    expect_true(TestWidget(pp, "annot-overlay-radar-smallmult"))
+
+    pp <- Radar(data.with.stats[-10,-3,],
+        overlay.annotation.list = list(list(type = "Caret - up", data = "p",
+        threstype = "above threshold", threshold = "1.96",
+        color = NULL, size = 20,
+        font.family = "Arial"), list(type = "Caret - down", data = "p",
+        threstype = "below threshold", threshold = "-1.96", color = NULL,
+        size = 20, font.family = "Arial",
+        font.weight = "normal", font.style = "normal")))
+    expect_true(TestWidget(pp, "annot-overlay-radar-caret"))
 })
 
 dat.with.colcmp <- structure(c("58.3333333333333", "41.6666666666667", "64.2857142857143",
@@ -106,6 +136,12 @@ test_that("Showing column comparisons with arrows",
         relative.pos = 0.5, halign = "Center", valign = "Middle", offset = 0,
         color = "#FF0000", size = 11, font.family = "Arial")))
     expect_true(TestWidget(pp, "annot-overlay-colcmp-stacked"))
+    
+    pp <- Radar(aperm(dat.with.colcmp,c(2,1,3)),
+        overlay.annotation.list = list(list(type = "Arrow - up",
+        data = "Column Comparisons", threstype = "above threshold", threshold = " ",
+        color = NULL, size = 11, font.family = "Arial Black")))
+    expect_true(TestWidget(pp, "annot-overlay-colcmp-radar"))
     
 
     pp <- Column(dat.with.colcmp,
