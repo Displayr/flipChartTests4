@@ -11,9 +11,11 @@ LazyData: TRUE
 Imports: flipChartTests
 Remotes:
     Displayr/flipChartTests,
-    Displayr/flipStandardCharts
+    Displayr/flipStandardCharts,
+    Displayr/flipChart
 Suggests:
     testthat,
-    flipStandardCharts
+    flipStandardCharts,
+    flipChart
 RoxygenNote: 7.1.1
 Encoding: UTF-8
