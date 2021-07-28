@@ -1,8 +1,8 @@
 context("Custom hovertext")
+library(flipChartTests)
 library(flipStandardCharts)
-library(flipChart)
 
-tb <- structure(c(2.75482093663912, 6.06060606060606, 12.6721763085399,
+data.with.stats <- structure(c(2.75482093663912, 6.06060606060606, 12.6721763085399,
        18.4573002754821, 24.7933884297521, 15.9779614325069, 6.06060606060606,
        8.26446280991736, 4.95867768595041, 100, 3.77906976744186, 15.9883720930233,
        7.84883720930233, 18.0232558139535, 19.7674418604651, 13.0813953488372,
@@ -21,22 +21,23 @@ tb <- structure(c(2.75482093663912, 6.06060606060606, 12.6721763085399,
      "$150,001 to $200,000", "$200,001 or more", "NET"), c("Male",
     "Female", "NET"), c("Column %", "p")), name = "Income by Gender", questions = c("Income","Gender"))
 
-tmp.template <- matrix(paste0("%{x}: %{y}<br> p = ", sprintf("%.2e", tb[-10,,2])), 9, 3)
+tmp.template <- matrix(paste0("%{x}: %{y}<br> p = ", 
+                              sprintf("%.2e", data.with.stats[-10,,2])), 9, 3)
 chart.type <- c("Area", "Bar", "Column", "BarMultiColor", "ColumnMultiColor", "Line", "Radar")
 for (func in chart.type)
 {
     tname <- paste0("customhover-", tolower(func))
+    chart <- get(func, mode = "function")
     test_that(tname,
     {
-        pp <- CChart(func, data.with.stats[,-10,], hovertext.template = tmp.template)
+        pp <- chart(data.with.stats[-10,,], hovertext.template = tmp.template)
         expect_true(TestWidget(pp, tname, delay = 2))
     })
     
     tname <- paste0("customhover-smallmult-", tolower(func))
     test_that(tname,
     {
-        pp <- CChart(func, data.with.stats[,-10,], hovertext.template = tmp.template,
-                     small.multiples = TRUE)
+        pp <- SmallMultiples(data.with.stats[-10,,], func, hovertext.template = tmp.template)
         expect_true(TestWidget(pp, tname, delay = 2))
     })
 }
@@ -46,7 +47,8 @@ for (func in chart.type[1:3])
     tname <- paste0("customhover-stacked-", tolower(func))
     test_that(tname,
     {
-        pp <- CChart(func, type = "Stacked", data.with.stats[,-10,], hovertext.template = tmp.template)
+        chart <- get(func, mode = "function")
+        pp <- chart(type = "Stacked", data.with.stats[-10,,], hovertext.template = tmp.template)
         expect_true(TestWidget(pp, tname, delay = 2))
     })
 }
