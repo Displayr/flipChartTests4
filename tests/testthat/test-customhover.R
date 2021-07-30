@@ -1,5 +1,4 @@
 context("Custom hovertext")
-library(flipChartTests)
 library(flipStandardCharts)
 
 data.with.stats <- structure(c(2.75482093663912, 6.06060606060606, 12.6721763085399,
