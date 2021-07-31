@@ -37,7 +37,7 @@ for (func in chart.type)
     test_that(tname,
     {
         pp <- SmallMultiples(data.with.stats[-10,,], func, hovertext.template = tmp.template)
-        expect_true(TestWidget(pp, tname, delay = 2))
+        expect_true(TestWidget(pp, tname, delay = 2, mouse.xpos = 0.25, mouse.ypos = 0.25))
     })
 }
 
