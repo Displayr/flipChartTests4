@@ -1,4 +1,5 @@
 context("Marker border")
+library(flipStandardCharts)
 
 tb <- structure(c(21.7684616846345, 16.8273954590784, 23.6218418617686,
 22.3939814605362, 15.3883195339823, 20.2682378794749, 22.3469131808503,
@@ -15,7 +16,7 @@ args <- c('autocolor' = 'opacity = 0.2, marker.border.colors = NULL, marker.bord
           'onecolor' = 'marker.border.colors = "red", marker.border.width = 2, marker.border.opacity = 1')
 charting.funcs <- c("Bar", "BarMultiColor", "Column", "ColumnMultiColor", "Pyramid") 
 
-for (func in charting.funcs[6])
+for (func in charting.funcs)
 {
     for (ii in 1:length(args))
     {

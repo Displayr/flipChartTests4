@@ -29,7 +29,7 @@ for (func in chart.type)
     chart <- get(func, mode = "function")
     test_that(tname,
     {
-        pp <- chart(data.with.stats[-10,,], hovertext.template = tmp.template)
+        pp <- suppressWarnings(chart(data.with.stats[-10,,], hovertext.template = tmp.template))
         expect_true(TestWidget(pp, tname, delay = 2))
     })
     
