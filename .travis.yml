@@ -1,6 +1,6 @@
 language: r
 r:
-  - devel
+  - release
 dist: bionic
 cache: packages
 warnings_are_errors: false
