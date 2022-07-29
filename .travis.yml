@@ -2,8 +2,6 @@ language: r
 r:
   - devel
 dist: bionic
-addons:
-    chrome: beta
 cache: packages
 warnings_are_errors: false
 latex: false
