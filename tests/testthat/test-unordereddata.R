@@ -14,7 +14,7 @@ unordered <- structure(c(10.7660810827377, 2.67668118502137, 15.477314241581,
 
 test_that("Datalabels for unordered data",
 {
-    pp <- Column(unordered, type = "Column", data.label.show = TRUE)
+    pp <- Column(unordered, type = "Stacked", data.label.show = TRUE)
     expect_true(TestWidget(pp, "unordereddata-numericaxis"))
 
     pp <- Column(unordered, x.tick.format = "%b %Y", data.label.show = TRUE)
