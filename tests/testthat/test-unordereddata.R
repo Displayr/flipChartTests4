@@ -1,5 +1,6 @@
 context("Unordered data")
 library(flipStandardCharts)
+library(flipChartTests)
 
 unordered <- structure(c(10.7660810827377, 2.67668118502137, 15.477314241581, 
 6.46853382596853, 15.6575253460176, 8.66246847988781, 17.5650660161087, 

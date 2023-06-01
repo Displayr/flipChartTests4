@@ -1,5 +1,6 @@
 context("Marker border")
 library(flipStandardCharts)
+library(flipChartTests)
 
 tb <- structure(c(21.7684616846345, 16.8273954590784, 23.6218418617686,
 22.3939814605362, 15.3883195339823, 20.2682378794749, 22.3469131808503,
