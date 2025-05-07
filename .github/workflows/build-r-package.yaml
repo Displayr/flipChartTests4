@@ -1,0 +1,18 @@
+name: Build flipChartTests4
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    name: Build flipChartTests4
+    permissions:
+      checks: write
+      contents: read
+    uses: Displayr/nixr-public/.github/workflows/build-flake-installable.yaml@master
+    with:
+      installable-path: pkgs.x86_64-linux.rPackages.flipChartTests4
+      build-args: --override-input flipChartTests4 .
+      installable-name: flipChartTests4
+    secrets: inherit
